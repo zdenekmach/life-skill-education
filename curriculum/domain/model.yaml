@@ -1,0 +1,570 @@
+# Domain Knowledge Model: Life Skills Education
+# Projekt: life-skills-education
+# Verze: 1.1.0
+# Datum: 2026-01-08
+# Jazyk: cs
+
+metadata:
+  name: "Meta-dovednosti pro děti 11-13 let"
+  description: "Myšlenkový model pro vzdělávání meta-dovedností s AI podporou"
+  version: "1.1.0"
+  created: "2026-01-08"
+  updated: "2026-01-08"
+  language: "cs"
+  domain: "education"
+  subdomain: "meta-skills"
+
+# =============================================================================
+# ACTORS - Klíčoví aktéři v doméně
+# =============================================================================
+actors:
+  - id: child
+    name: "Dítě (11-13 let)"
+    name_en: "Child (11-13 years)"
+    type: primary_user
+    description: "Primární cílová skupina - dítě ve věku 11-13 let v kritickém období kognitivního vývoje"
+    characteristics:
+      - "Formálně-operační fáze (abstraktní myšlení)"
+      - "Rapidní vývoj prefrontálního kortexu"
+      - "Zvýšená sebeuvědomělost"
+      - "Schopnost metakognice"
+    needs:
+      - "Rozvoj meta-dovedností"
+      - "Strukturované vedení s postupnou autonomií"
+      - "Aktivní engagement, ne pasivní učení"
+
+  - id: parent
+    name: "Rodič/Vychovatel"
+    name_en: "Parent/Guardian"
+    type: facilitator
+    description: "Dospělý facilitátor vzdělávání, zejména v kontextu domácího vzdělávání"
+    roles:
+      - "Facilitátor učení"
+      - "Reflection moderator"
+      - "Mentor a průvodce"
+    needs:
+      - "Metodické vedení"
+      - "Nástroje pro hodnocení pokroku"
+      - "Praktické aktivity"
+
+  - id: teacher
+    name: "Učitel"
+    name_en: "Teacher"
+    type: facilitator
+    description: "Pedagog ve školním prostředí"
+    roles:
+      - "Průvodce učením"
+      - "Integrátor meta-dovedností do předmětů"
+      - "Facilitátor PhBL projektů"
+
+  - id: ai_assistant
+    name: "AI Asistent"
+    name_en: "AI Assistant"
+    type: tool
+    description: "AI nástroj designovaný jako 'cognitive mirror' pro posílení metakognice"
+    design_principles:
+      - "Cognitive Mirror - zrcadlí myšlení zpět"
+      - "Teachable Agent - AI jako učitelný nováček"
+      - "Socratic Dialog - pokládá otázky"
+    anti_patterns:
+      - "Answer Machine - přímé odpovědi"
+      - "Cognitive Offloading - přebírání myšlení"
+
+# =============================================================================
+# CONCEPTS - Klíčové koncepty domény
+# =============================================================================
+concepts:
+  # === META-DOVEDNOSTI (CORE) ===
+  - id: meta_skills
+    name: "Meta-dovednosti"
+    name_en: "Meta-skills"
+    category: core
+    definition: "Dovednosti vyššího řádu, které umožňují efektivní využívání a rozvoj ostatních dovedností"
+    attributes:
+      - "Transferovatelné napříč doménami"
+      - "Zaměřené na procesy a strategie"
+      - "Umožňují celoživotní učení"
+    examples:
+      - "Metakognice"
+      - "Kritické myšlení"
+      - "Seberegulace"
+    sources:
+      - "2026-01-08-meta-skills-education.md"
+
+  - id: metacognition
+    name: "Metakognice"
+    name_en: "Metacognition"
+    category: core
+    definition: "Schopnost přemýšlet o vlastním myšlení - uvědomování si a řízení kognitivních procesů"
+    components:
+      - name: "Metakognitivní znalosti"
+        description: "Co vím o svém myšlení"
+      - name: "Metakognitivní regulace"
+        description: "Jak řídím své myšlení"
+    development_window: "11-17 let"
+    sources:
+      - "PMC - The development of metacognitive ability in adolescence"
+
+  - id: executive_functions
+    name: "Exekutivní funkce"
+    name_en: "Executive Functions"
+    category: core
+    definition: "Kognitivní procesy řízení chování - pracovní paměť, inhibice, kognitivní flexibilita"
+    components:
+      - id: working_memory
+        name: "Pracovní paměť"
+      - id: inhibition
+        name: "Inhibiční kontrola"
+      - id: cognitive_flexibility
+        name: "Kognitivní flexibilita"
+    critical_period: "10-15 let"
+    sources:
+      - "Nature Communications - A canonical trajectory of executive function maturation"
+
+  - id: critical_thinking
+    name: "Kritické myšlení"
+    name_en: "Critical Thinking"
+    category: core
+    definition: "Schopnost analyzovat a hodnotit informace, rozpoznávat argumenty a kognitivní zkreslení"
+    subskills:
+      - "Argumentace a logika"
+      - "Rozpoznávání dezinformací"
+      - "Vědecké myšlení"
+      - "Rozhodování pod nejistotou"
+
+  - id: learning_to_learn
+    name: "Učení se učit"
+    name_en: "Learning to Learn"
+    category: core
+    definition: "Efektivní strategie pro osvojování znalostí a kompetence v oblasti vlastního učení"
+    strategies:
+      - "Active recall"
+      - "Spaced repetition"
+      - "Elaboration"
+      - "Self-testing"
+    finnish_equivalent: "T1 - Thinking and learning to learn"
+
+  - id: emotional_intelligence
+    name: "Emocionální inteligence"
+    name_en: "Emotional Intelligence"
+    category: core
+    definition: "Schopnost rozpoznávat, rozumět a řídit vlastní emoce a emoce druhých"
+    casel_components:
+      - "Sebeuvědomění"
+      - "Sebeřízení"
+      - "Sociální uvědomění"
+      - "Vztahové dovednosti"
+      - "Zodpovědné rozhodování"
+
+  - id: self_regulation
+    name: "Seberegulace"
+    name_en: "Self-regulation"
+    category: core
+    definition: "Řízení emocí, chování a motivace pro dosažení cílů"
+    includes:
+      - "Nastavování cílů"
+      - "Vytrvalost"
+      - "Zvládání frustrace"
+      - "Odložená gratifikace"
+
+  - id: communication_collaboration
+    name: "Komunikace a spolupráce"
+    name_en: "Communication & Collaboration"
+    category: core
+    definition: "Efektivní předávání myšlenek a týmová práce"
+    p21_4cs: true
+
+  - id: digital_literacy
+    name: "Digitální gramotnost"
+    name_en: "Digital Literacy"
+    category: core
+    definition: "Kritické a bezpečné využívání digitálních technologií"
+    includes:
+      - "AI gramotnost"
+      - "Kritické hodnocení online zdrojů"
+      - "Digitální bezpečnost"
+
+  # === FRAMEWORKY ===
+  - id: casel_framework
+    name: "CASEL Framework"
+    name_en: "CASEL Framework"
+    category: framework
+    definition: "Framework pro sociálně-emocionální učení (SEL) s 5 klíčovými kompetencemi"
+    competencies:
+      - "Self-awareness"
+      - "Self-management"
+      - "Social awareness"
+      - "Relationship skills"
+      - "Responsible decision-making"
+    evidence: "11 percentilních bodů zlepšení akademických výsledků"
+    source: "CASEL.org"
+
+  - id: p21_framework
+    name: "P21 Framework (4Cs)"
+    name_en: "P21 Framework (4Cs)"
+    category: framework
+    definition: "Framework pro dovednosti 21. století se 4 základními dovednostmi"
+    core_skills:
+      - id: critical_thinking
+        name: "Critical Thinking"
+      - id: creativity
+        name: "Creativity"
+      - id: collaboration
+        name: "Collaboration"
+      - id: communication
+        name: "Communication"
+    source: "Battelle for Kids"
+
+  - id: finnish_t1_t7
+    name: "Finské transversální kompetence (T1-T7)"
+    name_en: "Finnish Transversal Competencies (T1-T7)"
+    category: framework
+    definition: "7 klíčových kompetencí finského kurikula prostupujících všemi předměty"
+    competencies:
+      - id: t1
+        name: "Myšlení a učení se učit"
+        name_en: "Thinking and learning to learn"
+      - id: t2
+        name: "Kulturní kompetence a sebevyjádření"
+        name_en: "Cultural competence and self-expression"
+      - id: t3
+        name: "Péče o sebe a každodenní život"
+        name_en: "Taking care of oneself and daily life"
+      - id: t4
+        name: "Multigramotnost"
+        name_en: "Multiliteracy"
+      - id: t5
+        name: "ICT kompetence"
+        name_en: "ICT competence"
+      - id: t6
+        name: "Pracovní život a podnikavost"
+        name_en: "Working life and entrepreneurship"
+      - id: t7
+        name: "Participace a udržitelnost"
+        name_en: "Participation and sustainability"
+    source: "Finnish National Agency for Education"
+
+  - id: oecd_learning_compass
+    name: "OECD Learning Compass 2030"
+    name_en: "OECD Learning Compass 2030"
+    category: framework
+    definition: "Evoluční vzdělávací rámec OECD se zaměřením na studentskou agenturu"
+    transformative_competencies:
+      - "Vytváření nové hodnoty"
+      - "Usmíření tenzí a dilemat"
+      - "Přijímání odpovědnosti"
+    cycle: "Anticipace-Akce-Reflexe (AAR)"
+
+  # === COGNITIVE MIRROR ===
+  - id: cognitive_mirror
+    name: "Cognitive Mirror Framework"
+    name_en: "Cognitive Mirror Framework"
+    category: framework
+    definition: "Paradigma designu AI, kde AI vystupuje jako 'učitelný nováček' zrcadlící kvalitu studentova vysvětlování"
+    inventor: "Tomisu, Ueda & Yamanaka (2025)"
+    cycle:
+      - step: "Present"
+        description: "Student vysvětluje koncept AI"
+      - step: "Query"
+        description: "AI pokládá otázky na základě session"
+      - step: "Reflect"
+        description: "Kvalita AI odpovědi indikuje kvalitu vysvětlení"
+      - step: "Refine"
+        description: "Student identifikuje mezery a reviduje"
+    modes:
+      - id: m0
+        name: "Zmatené přeformulování"
+        trigger: "Nejasné/neúplné vysvětlení"
+      - id: m1
+        name: "Objasňující sonda"
+        trigger: "Částečné porozumění"
+      - id: m2
+        name: "Sokratovská mezera"
+        trigger: "Dobré ale neúplné vysvětlení"
+      - id: m3
+        name: "Přesná reformulace"
+        trigger: "Výborné vysvětlení"
+    source: "Frontiers in Education 2025"
+
+  - id: teaching_quality_index
+    name: "Teaching Quality Index (TQI)"
+    name_en: "Teaching Quality Index"
+    category: metric
+    definition: "Metrika hodnotící kvalitu studentova vysvětlování v Cognitive Mirror frameworku"
+    range: "M0 (confused) - M3 (precise)"
+    parent: cognitive_mirror
+
+  - id: protege_effect
+    name: "Protégé efekt"
+    name_en: "Protégé Effect"
+    category: principle
+    definition: "Fenomén, kdy studenti se učí lépe, když musí učit druhé"
+    application: "AI jako učitelný student"
+
+  - id: cognitive_offloading
+    name: "Kognitivní offloading"
+    name_en: "Cognitive Offloading"
+    category: risk
+    definition: "Přenášení kognitivních procesů na AI, které vede k oslabení vlastního myšlení"
+    evidence: "ChatGPT: +48% správných odpovědí, -17% porozumění konceptům"
+    mitigation: "Cognitive Mirror design"
+    source: "PMC - Cognitive paradox of AI in education"
+
+  # === NEW: Concepts from Synthesis Report (2026-01-08) ===
+  - id: cognitive_mirror_syndrome
+    name: "Cognitive Mirror Syndrome (CMS)"
+    name_en: "Cognitive Mirror Syndrome"
+    category: risk
+    definition: "Patologická rekurzivní smyčka, kde AI zrcadlí lidské biasy místo nezávislého zpracování reality"
+    inventor: "Gautam (2025)"
+    stages:
+      - stage: 1
+        name: "The Attractive Mirror"
+        description: "AI souhlasí → validace → preference AI nad lidmi"
+      - stage: 2
+        name: "The Convincing Mirror"
+        description: "Outsourcing kritického myšlení → AI jako proxy pro reality testing"
+      - stage: 3
+        name: "The Inescapable Mirror"
+        description: "Uzavřený kognitivní okruh → ztráta rozlišení vlastních myšlenek od AI"
+    societal_risks:
+      - "Truth Negotiation Culture"
+      - "Epistemological Chaos"
+      - "Innovation Homogeneity"
+    source: "ResearchGate - CMS Framework"
+
+  - id: scope_guardrails
+    name: "Scope Guardrails"
+    name_en: "Scope Guardrails"
+    category: safeguard
+    definition: "Algoritmický filtr před generováním odpovědi, udržující dialog ukotvený v zamýšleném kurikulu"
+    placement: "Před response generation"
+    purpose: "Brání driftu do irelevantních témat"
+    parent: cognitive_mirror
+
+  - id: learner_profile
+    name: "Learner Profile"
+    name_en: "Learner Profile"
+    category: component
+    definition: "Privacy-preserving model studenta pro adaptaci AI interakce"
+    features:
+      - "Analyzuje session logs a TQI trajektorie"
+      - "Adaptuje citlivost 'zrcadla' podle proficiency"
+      - "Udržuje zónu proximálního vývoje"
+    parent: cognitive_mirror
+
+  - id: curriculum_architect
+    name: "Curriculum Architect"
+    name_en: "Curriculum Architect"
+    category: role
+    definition: "Nová role učitele - designuje scénáře, learning objectives a TQI parametry"
+    responsibilities:
+      - "Design scénářů"
+      - "Nastavení learning objectives"
+      - "Definice TQI parametrů"
+      - "High-level curriculum design"
+      - "Pastoral care"
+    parent: cognitive_mirror
+
+  - id: disconfirmation_mechanisms
+    name: "Disconfirmation Mechanisms"
+    name_en: "Disconfirmation Mechanisms"
+    category: safeguard
+    definition: "Algoritmy záměrně zavádějící třecí plochu nebo challenge user priors při driftu od reality"
+    purpose: "Prevence CMS"
+    parent: cognitive_mirror_syndrome
+
+  - id: predictive_coding
+    name: "Predictive Coding"
+    name_en: "Predictive Coding"
+    category: theory
+    definition: "Teorie mozku jako aktivního generátoru predikcí, ne pasivního přijímače"
+    mechanisms:
+      - name: "Perceptual Inference"
+        description: "Update vnitřního modelu dle senzorických dat"
+      - name: "Active Inference"
+        description: "Změna světa aby odpovídal predikci"
+    key_concept: "Prediction Error minimization"
+    precision: "Váha důvěry v priors vs. senzorická evidence"
+    applications:
+      - "Mirror Self-Recognition (MSR)"
+      - "ASD modeling"
+      - "Developmental trajectory modeling"
+    source: "JST CREST Cognitive Mirroring (Nagai et al.)"
+
+  - id: authenticity_verification_loop
+    name: "Authenticity Verification Loop (AVL)"
+    name_en: "Authenticity Verification Loop"
+    category: method
+    definition: "Terapeutický AI mirror pro self-integration - non-judgmental, high-fidelity reflector"
+    focus:
+      - "Presence"
+      - "Alignment"
+    not_doing:
+      - "Oracle (neopravuje)"
+      - "Therapist (neinterpretuje)"
+    outcome: "Deep Resonance - subjektivní pocit být hluboce pochopen"
+    facilitates: "Metacognition through externalization"
+    source: "UX Magazine - The Mirror That Doesn't Flinch"
+
+  # === PEDAGOGICKÉ METODY ===
+  - id: phenomenon_based_learning
+    name: "Phenomenon-based Learning (PhBL)"
+    name_en: "Phenomenon-based Learning"
+    category: method
+    definition: "Konstruktivistická forma učení zaměřená na holistické studium reálných fenoménů"
+    characteristics:
+      - "Integrace předmětů"
+      - "Reálná témata"
+      - "Studentem řízené"
+      - "Kolaborativní"
+    finnish_requirement: "Povinně min. 1x ročně"
+    source: "Finnish curriculum 2016"
+
+  - id: socratic_method
+    name: "Sokratovská metoda"
+    name_en: "Socratic Method"
+    category: method
+    definition: "Metoda učení pomocí vedených otázek namísto přímého předávání informací"
+    application_in_ai: "Socratic AI Dialog"
+
+  - id: problem_based_learning
+    name: "Problémové učení (PBL)"
+    name_en: "Problem-based Learning"
+    category: method
+    definition: "Učení řízené nestrukturovanými problémy z reálného světa"
+    effectiveness: "Účinnější u sekundárních studentů"
+
+  - id: explicit_instruction
+    name: "Explicitní instrukce"
+    name_en: "Explicit Instruction"
+    category: method
+    definition: "Strukturovaná výuka s postupným přechodem od vedení k autonomii"
+    phases:
+      - "Explicitní modelování"
+      - "Guided practice"
+      - "Independent practice"
+
+  - id: metacognitive_scaffolding
+    name: "Metakognitivní scaffolding"
+    name_en: "Metacognitive Scaffolding"
+    category: method
+    definition: "Strukturovaná podpora rozvoje metakognitivních dovedností"
+    template:
+      before: ["Co už vím?", "Jaký je cíl?", "Jakou strategii použiji?"]
+      during: ["Jak mi to jde?", "Rozumím tomu?", "Co mě překvapilo?"]
+      after: ["Co jsem se naučil?", "Co bych udělal jinak?", "Kde to mohu použít?"]
+
+  # === MĚŘENÍ A HODNOCENÍ ===
+  - id: assessment_methods
+    name: "Metody hodnocení meta-dovedností"
+    name_en: "Meta-skills Assessment Methods"
+    category: measurement
+    types:
+      - type: "Off-line"
+        description: "Před nebo po aktivitě"
+        examples: ["Dotazníky", "Rozhovory"]
+      - type: "On-line"
+        description: "Během aktivity"
+        examples: ["Think-aloud", "Kalibrační úsudky"]
+    tools:
+      - "MAI (Metacognitive Awareness Inventory)"
+      - "MARSI"
+      - "SEARS"
+      - "Social Skills Scale for Adolescents"
+
+  - id: kirkpatrick_model
+    name: "Kirkpatrickův model evaluace"
+    name_en: "Kirkpatrick's Evaluation Model"
+    category: measurement
+    levels:
+      - level: 1
+        name: "Reakce"
+        description: "Spokojenost účastníků"
+      - level: 2
+        name: "Učení"
+        description: "Změna znalostí/dovedností"
+      - level: 3
+        name: "Chování"
+        description: "Aplikace v praxi"
+      - level: 4
+        name: "Výsledky"
+        description: "Business impact"
+
+# =============================================================================
+# ARTIFACTS - Klíčové artefakty/výstupy
+# =============================================================================
+artifacts:
+  - id: curriculum
+    name: "Kurikulum meta-dovedností"
+    name_en: "Meta-skills Curriculum"
+    type: deliverable
+    description: "Strukturovaný obsah pro rozvoj meta-dovedností"
+    status: "in_development"
+
+  - id: workshop
+    name: "Workshop pro rodiče/učitele"
+    name_en: "Parent/Teacher Workshop"
+    type: deliverable
+    description: "4-hodinový praktický workshop"
+    file: "outputs/training/training-meta-dovednosti-workshop-2026-01-08.md"
+    status: "completed"
+
+  - id: study_guide
+    name: "Study Guide"
+    name_en: "Study Guide"
+    type: deliverable
+    description: "Studijní průvodce s Active Recall a Spaced Repetition"
+    file: "outputs/learning/study-guide-meta-dovednosti-2026-01-08.md"
+    status: "completed"
+
+  - id: ai_reflection_partner
+    name: "AI Reflection Partner"
+    name_en: "AI Reflection Partner"
+    type: tool
+    description: "AI chatbot pro reflexní otázky založený na Cognitive Mirror"
+    status: "planned"
+    roadmap_phase: "Q2 2026"
+
+  - id: socratic_ai_dialog
+    name: "Socratic AI Dialog"
+    name_en: "Socratic AI Dialog"
+    type: tool
+    description: "AI vedoucí sokratovský rozhovor"
+    status: "planned"
+
+  - id: metacognition_tracker
+    name: "Meta-cognition Tracker"
+    name_en: "Meta-cognition Tracker"
+    type: tool
+    description: "AI pro sledování metakognitivního rozvoje"
+    status: "planned"
+
+# =============================================================================
+# EXTERNAL CONTEXT
+# =============================================================================
+external_context:
+  - id: rvp_reform
+    name: "Reforma RVP 2027"
+    name_en: "Czech RVP Reform 2027"
+    type: opportunity
+    description: "Plánovaná reforma českého kurikula s novými klíčovými kompetencemi"
+    timeline: "2027-2031"
+    relevance: "Vstupní bod pro B2B (školy)"
+
+  - id: ai_tutoring_market
+    name: "AI Tutoring Market"
+    name_en: "AI Tutoring Market"
+    type: market
+    trend: "Mainstream adoptce 2025-2026"
+    competitors:
+      - "Khanmigo"
+      - "Duolingo"
+    gap: "Žádný v CZ pro meta-dovednosti"
+
+  - id: sel_market
+    name: "SEL Market"
+    name_en: "SEL Market"
+    type: market
+    size: "$10.3B by 2028"
+    growth: "15% CAGR"

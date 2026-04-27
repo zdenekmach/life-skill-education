@@ -1,0 +1,30 @@
+# Claude Code lokální stav (každý uživatel má svůj)
+.claude/
+.claude-cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editory
+.vscode/
+.idea/
+*.swp
+*~
+
+# Dočasné soubory
+*.tmp
+*.log
+
+# Sessions / runtime artefakty (lokální záznamy z hraní)
+campaign/sessions/*-flow.md
+campaign/sessions/*-plan.md
+campaign/puzzles/session-*/
+campaign/active-quest.md
+campaign/quest-log.md
+campaign/SESSION-LEARNINGS.md
+
+# Ale ponech .gitkeep aby struktura zůstala
+!campaign/sessions/.gitkeep
+!campaign/puzzles/.gitkeep
+!campaign/characters/.gitkeep

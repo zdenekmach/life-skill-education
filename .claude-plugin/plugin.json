@@ -1,0 +1,12 @@
+{
+  "name": "questforge",
+  "version": "1.0.0",
+  "description": "QuestForge — Quest-based learning system pro domácí vzdělávání dětí (11–13 let). Orchestrace narativních misí kombinujících kurikulární moduly s Cognitive Mirror principem (AI nikdy nedává přímé odpovědi).",
+  "author": {
+    "name": "Zdeněk Macháček",
+    "email": "zdenek@machacek.consulting"
+  },
+  "homepage": "https://github.com/zdenekmach/Life-skills-education",
+  "license": "MIT",
+  "keywords": ["education", "kids", "homeschool", "quest-based-learning", "cognitive-mirror", "claude-code"]
+}

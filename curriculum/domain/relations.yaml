@@ -1,0 +1,379 @@
+# Domain Relations: Life Skills Education
+# Vztahy mezi entitami v doméně
+# Verze: 1.0.0
+
+metadata:
+  version: "1.0.0"
+  created: "2026-01-08"
+  total_relations: 52
+
+# =============================================================================
+# RELATION TYPES
+# =============================================================================
+relation_types:
+  - id: contains
+    name: "Obsahuje"
+    description: "Hierarchický vztah - parent obsahuje child"
+    inverse: "is_part_of"
+
+  - id: is_part_of
+    name: "Je součástí"
+    description: "Hierarchický vztah - child je součástí parent"
+    inverse: "contains"
+
+  - id: develops
+    name: "Rozvíjí"
+    description: "Aktivita/metoda rozvíjí dovednost"
+    inverse: "is_developed_by"
+
+  - id: supports
+    name: "Podporuje"
+    description: "Entita podporuje jinou entitu"
+    inverse: "is_supported_by"
+
+  - id: uses
+    name: "Používá"
+    description: "Aktér používá nástroj/metodu"
+    inverse: "is_used_by"
+
+  - id: targets
+    name: "Cílí na"
+    description: "Produkt/aktivita cílí na skupinu"
+    inverse: "is_targeted_by"
+
+  - id: mitigates
+    name: "Mitiguje"
+    description: "Řešení mitiguje riziko"
+    inverse: "is_mitigated_by"
+
+  - id: implements
+    name: "Implementuje"
+    description: "Konkrétní implementace frameworku/principu"
+    inverse: "is_implemented_by"
+
+  - id: measures
+    name: "Měří"
+    description: "Nástroj měří dovednost/kompetenci"
+    inverse: "is_measured_by"
+
+  - id: prerequisite_for
+    name: "Je prerekvizitou pro"
+    description: "Dovednost A je prerekvizitou pro dovednost B"
+    inverse: "requires"
+
+  - id: facilitates
+    name: "Facilituje"
+    description: "Aktér facilituje proces"
+    inverse: "is_facilitated_by"
+
+# =============================================================================
+# RELATIONS - ACTORS
+# =============================================================================
+relations:
+  # === CHILD relations ===
+  - from: child
+    to: meta_skills
+    type: develops
+    description: "Dítě rozvíjí meta-dovednosti"
+
+  - from: child
+    to: ai_assistant
+    type: uses
+    description: "Dítě používá AI asistenta jako cognitive mirror"
+
+  - from: child
+    to: metacognition
+    type: develops
+    description: "Dítě rozvíjí metakognici během kritického období"
+    critical_period: "11-17 let"
+
+  - from: child
+    to: executive_functions
+    type: develops
+    description: "Dítě rozvíjí exekutivní funkce"
+    critical_period: "10-15 let"
+
+  # === PARENT relations ===
+  - from: parent
+    to: child
+    type: facilitates
+    description: "Rodič facilituje učení dítěte"
+
+  - from: parent
+    to: workshop
+    type: uses
+    description: "Rodič používá workshop pro metodické vedení"
+
+  - from: parent
+    to: ai_assistant
+    type: uses
+    description: "Rodič monitoruje AI interakce dítěte"
+
+  - from: parent
+    to: metacognitive_scaffolding
+    type: implements
+    description: "Rodič implementuje metakognitivní scaffolding"
+
+  # === TEACHER relations ===
+  - from: teacher
+    to: child
+    type: facilitates
+    description: "Učitel facilituje učení dítěte"
+
+  - from: teacher
+    to: phenomenon_based_learning
+    type: implements
+    description: "Učitel implementuje PhBL projekty"
+
+  - from: teacher
+    to: curriculum
+    type: uses
+    description: "Učitel používá kurikulum"
+
+  # === AI ASSISTANT relations ===
+  - from: ai_assistant
+    to: cognitive_mirror
+    type: implements
+    description: "AI asistent implementuje Cognitive Mirror framework"
+
+  - from: ai_assistant
+    to: metacognition
+    type: develops
+    description: "AI asistent rozvíjí metakognici (při správném designu)"
+
+  - from: ai_assistant
+    to: cognitive_offloading
+    type: mitigates
+    description: "Správně designovaný AI mitiguje cognitive offloading"
+    condition: "Cognitive Mirror design"
+
+  - from: ai_assistant
+    to: protege_effect
+    type: implements
+    description: "AI jako teachable agent využívá protégé efekt"
+
+  # =============================================================================
+  # RELATIONS - META-SKILLS HIERARCHY
+  # =============================================================================
+  - from: meta_skills
+    to: metacognition
+    type: contains
+    description: "Meta-dovednosti obsahují metakognici"
+
+  - from: meta_skills
+    to: executive_functions
+    type: contains
+    description: "Meta-dovednosti obsahují exekutivní funkce"
+
+  - from: meta_skills
+    to: critical_thinking
+    type: contains
+    description: "Meta-dovednosti obsahují kritické myšlení"
+
+  - from: meta_skills
+    to: learning_to_learn
+    type: contains
+    description: "Meta-dovednosti obsahují učení se učit"
+
+  - from: meta_skills
+    to: emotional_intelligence
+    type: contains
+    description: "Meta-dovednosti obsahují emocionální inteligenci"
+
+  - from: meta_skills
+    to: self_regulation
+    type: contains
+    description: "Meta-dovednosti obsahují seberegulaci"
+
+  - from: meta_skills
+    to: communication_collaboration
+    type: contains
+    description: "Meta-dovednosti obsahují komunikaci a spolupráci"
+
+  - from: meta_skills
+    to: digital_literacy
+    type: contains
+    description: "Meta-dovednosti obsahují digitální gramotnost"
+
+  # === Inter-skill relations ===
+  - from: metacognition
+    to: learning_to_learn
+    type: prerequisite_for
+    description: "Metakognice je prerekvizitou pro efektivní učení se učit"
+
+  - from: executive_functions
+    to: self_regulation
+    type: supports
+    description: "Exekutivní funkce podporují seberegulaci"
+
+  - from: emotional_intelligence
+    to: self_regulation
+    type: supports
+    description: "Emocionální inteligence podporuje seberegulaci"
+
+  - from: critical_thinking
+    to: digital_literacy
+    type: supports
+    description: "Kritické myšlení podporuje digitální gramotnost"
+
+  # =============================================================================
+  # RELATIONS - FRAMEWORKS
+  # =============================================================================
+  - from: casel_framework
+    to: emotional_intelligence
+    type: contains
+    description: "CASEL framework definuje komponenty emocionální inteligence"
+
+  - from: p21_framework
+    to: critical_thinking
+    type: contains
+    description: "P21 obsahuje kritické myšlení jako 1 ze 4Cs"
+
+  - from: p21_framework
+    to: communication_collaboration
+    type: contains
+    description: "P21 obsahuje komunikaci a spolupráci"
+
+  - from: finnish_t1_t7
+    to: learning_to_learn
+    type: contains
+    description: "T1 = Myšlení a učení se učit"
+
+  - from: finnish_t1_t7
+    to: digital_literacy
+    type: contains
+    description: "T5 = ICT kompetence"
+
+  - from: oecd_learning_compass
+    to: meta_skills
+    type: supports
+    description: "OECD Learning Compass podporuje rozvoj meta-dovedností"
+
+  # === Cognitive Mirror relations ===
+  - from: cognitive_mirror
+    to: teaching_quality_index
+    type: contains
+    description: "Cognitive Mirror framework obsahuje TQI metriku"
+
+  - from: cognitive_mirror
+    to: protege_effect
+    type: implements
+    description: "Cognitive Mirror implementuje protégé efekt"
+
+  - from: cognitive_mirror
+    to: metacognition
+    type: develops
+    description: "Cognitive Mirror rozvíjí metakognici"
+
+  - from: cognitive_mirror
+    to: cognitive_offloading
+    type: mitigates
+    description: "Cognitive Mirror mitiguje cognitive offloading"
+
+  # =============================================================================
+  # RELATIONS - METHODS
+  # =============================================================================
+  - from: phenomenon_based_learning
+    to: meta_skills
+    type: develops
+    description: "PhBL rozvíjí meta-dovednosti holisticky"
+
+  - from: phenomenon_based_learning
+    to: critical_thinking
+    type: develops
+    description: "PhBL rozvíjí kritické myšlení"
+
+  - from: socratic_method
+    to: critical_thinking
+    type: develops
+    description: "Sokratovská metoda rozvíjí kritické myšlení"
+
+  - from: socratic_method
+    to: metacognition
+    type: develops
+    description: "Sokratovská metoda rozvíjí metakognici"
+
+  - from: problem_based_learning
+    to: critical_thinking
+    type: develops
+    description: "PBL rozvíjí kritické myšlení"
+
+  - from: explicit_instruction
+    to: meta_skills
+    type: develops
+    description: "Explicitní instrukce rozvíjí meta-dovednosti strukturovaně"
+
+  - from: metacognitive_scaffolding
+    to: metacognition
+    type: develops
+    description: "Metakognitivní scaffolding přímo rozvíjí metakognici"
+
+  # =============================================================================
+  # RELATIONS - ARTIFACTS
+  # =============================================================================
+  - from: curriculum
+    to: meta_skills
+    type: targets
+    description: "Kurikulum cílí na rozvoj meta-dovedností"
+
+  - from: curriculum
+    to: child
+    type: targets
+    description: "Kurikulum cílí na děti 11-13 let"
+
+  - from: workshop
+    to: parent
+    type: targets
+    description: "Workshop cílí na rodiče/učitele"
+
+  - from: workshop
+    to: metacognitive_scaffolding
+    type: implements
+    description: "Workshop implementuje metakognitivní scaffolding"
+
+  - from: ai_reflection_partner
+    to: cognitive_mirror
+    type: implements
+    description: "AI Reflection Partner implementuje Cognitive Mirror"
+
+  - from: ai_reflection_partner
+    to: child
+    type: targets
+    description: "AI Reflection Partner cílí na děti"
+
+  - from: socratic_ai_dialog
+    to: socratic_method
+    type: implements
+    description: "Socratic AI Dialog implementuje sokratovskou metodu"
+
+  - from: metacognition_tracker
+    to: metacognition
+    type: measures
+    description: "Metacognition Tracker měří metakognitivní dovednosti"
+
+  # =============================================================================
+  # RELATIONS - MEASUREMENT
+  # =============================================================================
+  - from: assessment_methods
+    to: meta_skills
+    type: measures
+    description: "Assessment metody měří meta-dovednosti"
+
+  - from: kirkpatrick_model
+    to: workshop
+    type: measures
+    description: "Kirkpatrick model evaluuje efektivitu workshopu"
+
+  # =============================================================================
+  # RELATIONS - EXTERNAL CONTEXT
+  # =============================================================================
+  - from: rvp_reform
+    to: curriculum
+    type: supports
+    description: "Reforma RVP vytváří příležitost pro kurikulum"
+    timeline: "2027"
+
+  - from: ai_tutoring_market
+    to: ai_reflection_partner
+    type: supports
+    description: "Rostoucí AI tutoring trh podporuje adopci produktu"
