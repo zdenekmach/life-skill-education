@@ -33,10 +33,10 @@ Kurikulum učí děti **meta-dovednosti** - schopnosti, které jim pomohou lépe
 Začněte těmito soubory pro získání celkového obrazu:
 
 ```
-1. outputs/curriculum/metakognice/README.md
+1. curriculum/metakognice/README.md
    → Co je metakognice, cíle modulu, struktura
 
-2. outputs/curriculum/kriticke-mysleni/README.md
+2. curriculum/kriticke-mysleni/README.md
    → Co je kritické myšlení, cíle modulu, struktura
 ```
 
@@ -52,10 +52,10 @@ Začněte těmito soubory pro získání celkového obrazu:
 Nejdůležitější soubory pro vás jako rodiče/facilitátora:
 
 ```
-3. outputs/curriculum/metakognice/facilitator-guide.md
+3. curriculum/metakognice/facilitator-guide.md
    → Kompletní průvodce modulem Metakognice
 
-4. outputs/curriculum/kriticke-mysleni/facilitator-guide.md
+4. curriculum/kriticke-mysleni/facilitator-guide.md
    → Kompletní průvodce modulem Kritické myšlení
 ```
 
@@ -72,10 +72,10 @@ Nejdůležitější soubory pro vás jako rodiče/facilitátora:
 Přečtěte si první aktivity z každého modulu - s nimi začnete:
 
 ```
-5. outputs/curriculum/metakognice/activities/activity-01-myslenkovy-detektiv.md
+5. curriculum/metakognice/activities/activity-01-myslenkovy-detektiv.md
    → První aktivita: Dítě sleduje vlastní myšlení
 
-6. outputs/curriculum/kriticke-mysleni/activities/activity-01-detektiv-faktu.md
+6. curriculum/kriticke-mysleni/activities/activity-01-detektiv-faktu.md
    → První aktivita: Rozlišování faktů od názorů
 ```
 
@@ -92,10 +92,10 @@ Přečtěte si první aktivity z každého modulu - s nimi začnete:
 Pochopte, jak funguje AI integrace:
 
 ```
-7. outputs/curriculum/metakognice/ai-scripts/script-01-teachable-ai.md
+7. curriculum/metakognice/ai-scripts/script-01-teachable-ai.md
    → AI jako "učitelný nováček" - dítě učí AI
 
-8. outputs/curriculum/kriticke-mysleni/ai-scripts/script-01-argument-analyzer.md
+8. curriculum/kriticke-mysleni/ai-scripts/script-01-argument-analyzer.md
    → AI pomáhá analyzovat argumenty
 ```
 
@@ -111,10 +111,10 @@ Pochopte, jak funguje AI integrace:
 Podívejte se, s čím bude dítě pracovat:
 
 ```
-9. outputs/curriculum/metakognice/student-workbook.md
+9. curriculum/metakognice/student-workbook.md
    → Pracovní sešit pro dítě - Metakognice
 
-10. outputs/curriculum/kriticke-mysleni/student-workbook.md
+10. curriculum/kriticke-mysleni/student-workbook.md
     → Pracovní sešit pro dítě - Kritické myšlení
 ```
 
