@@ -252,9 +252,7 @@ Kurikulum vychází z:
 
 ## Kontakt a podpora
 
-Pokud máte otázky nebo zpětnou vazbu:
-- Zaznamenejte do `outputs/pilot/feedback/`
-- Diskutujte s autorem kurikula
+Pokud máte otázky nebo zpětnou vazbu, kontaktujte autora kurikula (viz [README](../README.md)).
 
 ---
 
