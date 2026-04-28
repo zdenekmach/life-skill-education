@@ -46,7 +46,6 @@ Plugin pro [Claude Code](https://github.com/zdenekmach/cli_starter_pack), který
 
 **Předpoklady:**
 - Základní orientace v terminálu (instalace Claude Code — viz [návod](https://github.com/zdenekmach/cli_starter_pack))
-- Účet u Anthropic / API klíč pro Claude
 - Ochota investovat čas do přípravy první kampaně (cca 2–4 hodiny pro vlastní svět)
 
 ---
@@ -60,8 +59,7 @@ Plugin pro [Claude Code](https://github.com/zdenekmach/cli_starter_pack), který
    ```
 
 2. **Nainstalujte Claude Code** (pokud ještě nemáte):
-   - Návod: [zdenekmach/cli_starter_pack](https://github.com/zdenekmach/cli_starter_pack)
-   - Plus API klíč od [Anthropic](https://console.anthropic.com/)
+   - Návod: [zdenekmach/cli_starter_pack](https://github.com/zdenekmach/cli_starter_pack) — provede vás instalací i přihlášením
 
 3. **Spusťte Claude Code v adresáři projektu:**
    ```bash
@@ -111,7 +109,7 @@ Life-skills-education/
 │   └── <modul>/               ← facilitator-guide, activities, workbook, ai-scripts, assessment, resources
 │
 ├── research/                  ← vědecké podklady (21st century skills, finská škola, cognitive mirror, gamifikace)
-├── printables/                ← DOCX pracovní listy, kartičky, postery
+├── printables/                ← Markdown předlohy + PDF výstupy (pracovní listy, kartičky, postery)
 ├── training/                  ← workshop pro rodiče/učitele (1 den)
 ├── guides/                    ← parent study guide
 └── docs/                      ← přehledy: meta-skills overview, QuestForge for parents

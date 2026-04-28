@@ -9,8 +9,8 @@
 Potřebujete:
 
 1. **Počítač** (Mac, Linux, nebo Windows s WSL2)
-2. **Claude Code** nainstalovaný a funkční s API klíčem od Anthropic
-   - **Pokud Claude Code ještě nemáte**: následujte [návod v repu cli_starter_pack](https://github.com/zdenekmach/cli_starter_pack) — provede vás instalací a získáním API klíče.
+2. **Claude Code** nainstalovaný a přihlášený
+   - **Pokud Claude Code ještě nemáte**: následujte [návod v repu cli_starter_pack](https://github.com/zdenekmach/cli_starter_pack) — provede vás instalací a přihlášením.
 3. **Git** (na Macu obvykle už je; jinak `xcode-select --install` nebo balík od [git-scm.com](https://git-scm.com/))
 
 > **Kontrola:** v terminálu napište `claude --version`. Pokud uvidíte verzi (např. `claude 1.x.x`), máte hotovo. Pokud ne, vraťte se k instalaci.
@@ -128,7 +128,9 @@ Pomocí `/progress` zobrazíte přehled:
 
 ### Kolik to stojí
 
-Claude Code účtuje za API použití (Anthropic). Jedna session (~90 min) typicky spotřebuje **0,50–2 USD** podle množství textu a délky dialogu. Příprava session přes `/prep` cca **0,20–0,80 USD**.
+Záleží na tom, jak je Claude Code přihlášený:
+- **Claude Pro / Max předplatné** — fixní měsíční cena, žádné per-session náklady (pro běžné rodinné používání obvykle stačí Pro plán).
+- **Anthropic API klíč (pay-as-you-go)** — jedna session (~90 min) typicky spotřebuje **0,50–2 USD** podle množství textu a délky dialogu. Příprava session přes `/prep` cca **0,20–0,80 USD**.
 
 ### Kolik to zabere času rodiči
 
